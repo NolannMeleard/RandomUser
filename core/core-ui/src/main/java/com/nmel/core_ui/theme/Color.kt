@@ -1,4 +1,4 @@
-package com.nmel.randomuser.ui.theme
+package com.nmel.core_ui.theme
 
 import androidx.compose.ui.graphics.Color
 

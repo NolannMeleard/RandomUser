@@ -1,28 +1,22 @@
 plugins {
-    id 'com.android.application'
-    id "kotlin-android"
-    id 'org.jetbrains.kotlin.android'
-    id 'kotlin-kapt'
+    id 'com.android.library'
+    id 'kotlin-android'
     id 'kotlin-parcelize'
-    id 'com.google.dagger.hilt.android'
     id 'androidx.navigation.safeargs.kotlin'
+    id 'dagger.hilt.android.plugin'
+    id 'kotlin-kapt'
 }
 
 android {
-    namespace 'com.nmel.randomuser'
+    namespace 'com.nmel.home'
     compileSdk 33
 
     defaultConfig {
-        applicationId "com.nmel.randomuser"
         minSdk 24
         targetSdk 33
-        versionCode 1
-        versionName "1.0"
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
-        vectorDrawables {
-            useSupportLibrary true
-        }
+        consumerProguardFiles "consumer-rules.pro"
     }
 
     buildTypes {
@@ -31,40 +25,25 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
     }
-    compileOptions {
-        sourceCompatibility JavaVersion.VERSION_17
-        targetCompatibility JavaVersion.VERSION_17
-    }
-    kotlinOptions {
-        jvmTarget = '17'
-    }
     buildFeatures {
         viewBinding true
         compose true
     }
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_17
+        targetCompatibility JavaVersion.VERSION_17
+    }
     composeOptions {
         kotlinCompilerExtensionVersion '1.4.5'
     }
-    packagingOptions {
-        resources {
-            excludes += '/META-INF/{AL2.0,LGPL2.1}'
-        }
+    kotlinOptions {
+        jvmTarget = '17'
     }
 }
 
 dependencies {
+    implementation(project(":core:core-ui"))
 
-    /**
-     **************************** Modules ****************************
-     */
-    implementation project(':core:core-ui')
-    implementation project(':features:home')
-    implementation project(':features:user')
-
-
-    /**
-     **************************** Libraries ****************************
-     */
     implementation "androidx.core:core-ktx:$core_version"
     implementation 'androidx.lifecycle:lifecycle-runtime-ktx:2.6.1'
     implementation 'androidx.activity:activity-compose:1.7.0'
