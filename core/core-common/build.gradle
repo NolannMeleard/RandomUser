@@ -4,9 +4,8 @@ plugins {
     id 'kotlin-parcelize'
     id 'kotlin-kapt'
 }
-
 android {
-    namespace 'com.nmel.core_ui'
+    namespace 'com.nmel.core_common'
     compileSdk project.ext.compile_sdk_version
 
     defaultConfig {
@@ -40,8 +39,8 @@ android {
     }
 }
 
+
 dependencies {
-    implementation project(':core:core-common')
 
     implementation "androidx.core:core-ktx:$core_version"
     implementation 'androidx.lifecycle:lifecycle-runtime-ktx:2.6.1'
@@ -61,9 +60,10 @@ dependencies {
     kapt "com.google.dagger:hilt-compiler:$hilt_version"
 
     // Retrofit
-    implementation "com.squareup.retrofit2:retrofit:$retrofit_version"
-    implementation "com.squareup.retrofit2:converter-gson:$retrofit_version"
-    implementation "com.squareup.okhttp3:logging-interceptor:$interceptor_version"
+    api "com.squareup.retrofit2:retrofit:$retrofit_version"
+    api "com.squareup.retrofit2:converter-gson:$retrofit_version"
+    api "com.squareup.okhttp3:logging-interceptor:$interceptor_version"
+    api "com.squareup.retrofit2:adapter-rxjava3:$retrofit_version"
 
     // Timber
     implementation "com.jakewharton.timber:timber:$timber_version"

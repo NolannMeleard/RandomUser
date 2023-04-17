@@ -23,6 +23,7 @@ android {
         vectorDrawables {
             useSupportLibrary true
         }
+        buildConfigField "String", "BASE_URL", '"https://randomuser.me/"'
     }
 
     buildTypes {
@@ -57,8 +58,9 @@ dependencies {
     /**
      **************************** Modules ****************************
      */
-    implementation project(':core:core-ui')
+    implementation project(':core:core-common')
     implementation project(':core:core-network')
+    implementation project(':core:core-ui')
     implementation project(':features:home')
     implementation project(':features:user')
 
@@ -108,10 +110,6 @@ dependencies {
     implementation "com.github.bumptech.glide:glide:$glide_version"
     kapt("com.github.bumptech.glide:compiler:$glide_version")
     implementation "com.github.skydoves:landscapist-glide:$landcapist_glide_version"
-
-    api "io.reactivex.rxjava3:rxandroid:$rxandroid_version"
-    api "io.reactivex.rxjava3:rxjava:$rxjava_version"
-
 
     // Tests
     testImplementation 'junit:junit:4.13.2'

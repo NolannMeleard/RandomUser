@@ -88,10 +88,6 @@ dependencies {
     kapt("com.github.bumptech.glide:compiler:$glide_version")
     implementation "com.github.skydoves:landscapist-glide:$landcapist_glide_version"
 
-    api "io.reactivex.rxjava3:rxandroid:$rxandroid_version"
-    api "io.reactivex.rxjava3:rxjava:$rxjava_version"
-
-
     // Tests
     testImplementation 'junit:junit:4.13.2'
     androidTestImplementation 'androidx.test.ext:junit:1.1.5'
