@@ -11,8 +11,9 @@ import timber.log.Timber
  */
 
 @HiltAndroidApp
-class RandomUserApplication : Application() {
+open class RandomUserApplication : Application() {
     override fun onCreate() {
         super.onCreate()
+        if (BuildConfig.DEBUG) Timber.plant(Timber.DebugTree())
     }
 }

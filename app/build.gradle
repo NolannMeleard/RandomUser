@@ -10,12 +10,12 @@ plugins {
 
 android {
     namespace 'com.nmel.randomuser'
-    compileSdk 33
+    compileSdk project.ext.compile_sdk_version
 
     defaultConfig {
         applicationId "com.nmel.randomuser"
-        minSdk 24
-        targetSdk 33
+        minSdk project.ext.min_sdk_version
+        targetSdk project.ext.target_sdk_version
         versionCode 1
         versionName "1.0"
 
@@ -31,19 +31,19 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
     }
+    composeOptions {
+        kotlinCompilerExtensionVersion compose_compiler_version
+    }
     compileOptions {
-        sourceCompatibility JavaVersion.VERSION_17
-        targetCompatibility JavaVersion.VERSION_17
+        sourceCompatibility project.ext.javaCompileOptionsSourceCompatibility
+        targetCompatibility project.ext.javaCompileOptionsTargetCompatibility
     }
     kotlinOptions {
-        jvmTarget = '17'
+        jvmTarget = project.ext.javaKotlinOptionsJvmTarget
     }
     buildFeatures {
         viewBinding true
         compose true
-    }
-    composeOptions {
-        kotlinCompilerExtensionVersion '1.4.5'
     }
     packagingOptions {
         resources {
@@ -58,6 +58,7 @@ dependencies {
      **************************** Modules ****************************
      */
     implementation project(':core:core-ui')
+    implementation project(':core:core-network')
     implementation project(':features:home')
     implementation project(':features:user')
 
@@ -80,6 +81,7 @@ dependencies {
 
     // Hilt
     implementation "com.google.dagger:hilt-android:$hilt_version"
+    implementation 'androidx.test.ext:junit-ktx:1.1.5'
     kapt "com.google.dagger:hilt-compiler:$hilt_version"
 
     // Retrofit
@@ -114,6 +116,7 @@ dependencies {
     // Tests
     testImplementation 'junit:junit:4.13.2'
     androidTestImplementation 'androidx.test.ext:junit:1.1.5'
+    testImplementation "org.robolectric:robolectric:$robolectric_version"
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.5.1'
     androidTestImplementation platform('androidx.compose:compose-bom:2022.10.00')
     androidTestImplementation 'androidx.compose.ui:ui-test-junit4'

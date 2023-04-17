@@ -1,4 +1,4 @@
-package com.nmel.randomuser
+package com.nmel.core_network
 
 import org.junit.Test
 

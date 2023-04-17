@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.compose.foundation.isSystemInDarkTheme
 import androidx.compose.material3.Text
 import com.nmel.core_ui.ParentFragmentWithBinding
 import com.nmel.core_ui.theme.RandomUserTheme
@@ -27,7 +28,7 @@ class HomeFragment : ParentFragmentWithBinding<FragmentHomeBinding>() {
         binding.composeView.apply {
             defineContentOfComposeView(this) {
                 RandomUserTheme {
-                    Text(text = "Hello")
+                    Text(text = "Hello ${isSystemInDarkTheme()}")
                 }
             }
         }

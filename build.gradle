@@ -11,3 +11,23 @@ plugins {
     id 'androidx.navigation.safeargs' version '2.5.3' apply false
 }
 
+allprojects {
+    project.ext {
+        /**
+         * Android sdk version
+         */
+        compile_sdk_version = 33
+        min_sdk_version = 24
+        target_sdk_version = 33
+
+        /**
+         * Java version
+         */
+        javaCompileOptionsSourceCompatibility = JavaVersion.VERSION_17
+        javaCompileOptionsTargetCompatibility = JavaVersion.VERSION_17
+        javaKotlinOptionsJvmTarget = "17"
+
+        // Compose bom
+        composeBom = "androidx.compose:compose-bom:$compose_bom_version"
+    }
+}
