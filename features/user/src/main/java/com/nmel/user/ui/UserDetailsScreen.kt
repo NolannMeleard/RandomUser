@@ -1,5 +1,6 @@
 package com.nmel.user.ui
 
+import android.content.res.Configuration
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
@@ -16,9 +17,13 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.draw.shadow
+import androidx.compose.ui.tooling.preview.Preview
+import androidx.compose.ui.tooling.preview.PreviewParameter
 import androidx.compose.ui.unit.dp
 import com.nmel.core_ui.composable.BackButton
+import com.nmel.core_ui.theme.RandomUserTheme
 import com.nmel.user.models.local.User
+import com.nmel.user.models.local.UserPreviewProvider
 import com.nmel.user.ui.details.ContactInformation
 import com.nmel.user.ui.details.PersonalInformation
 import com.nmel.user.ui.details.UserHeader
@@ -55,8 +60,7 @@ fun UserDetailsScreen(modifier: Modifier = Modifier, user: User, onBackClick: ()
 fun UserDetailsScreenContent(modifier: Modifier = Modifier, user: User) {
     Column(
         modifier = modifier
-            .padding(horizontal = 20.dp)
-            .padding(vertical = 20.dp)
+            .padding(horizontal = 20.dp, vertical = 20.dp)
             .shadow(
                 3.dp,
                 shape = MaterialTheme.shapes.large
@@ -86,5 +90,13 @@ fun UserDetailsScreenContent(modifier: Modifier = Modifier, user: User) {
                 .fillMaxWidth()
                 .padding(bottom = 12.dp)
         )
+    }
+}
+
+@Preview(showBackground = true, uiMode = Configuration.UI_MODE_NIGHT_YES)
+@Composable
+fun UserDetailsScreenContentPreview(@PreviewParameter(UserPreviewProvider::class) user: User) {
+    RandomUserTheme {
+        UserDetailsScreenContent(user = user)
     }
 }

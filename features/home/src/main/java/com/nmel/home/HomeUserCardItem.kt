@@ -1,5 +1,6 @@
 package com.nmel.home
 
+import android.content.res.Configuration
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.aspectRatio
@@ -17,10 +18,15 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
+import androidx.compose.ui.tooling.preview.Preview
+import androidx.compose.ui.tooling.preview.PreviewParameter
 import androidx.compose.ui.unit.dp
 import androidx.constraintlayout.compose.ConstraintLayout
 import androidx.constraintlayout.compose.Dimension
+import com.nmel.core_ui.theme.RandomUserTheme
 import com.nmel.user.models.local.User
+import com.nmel.user.models.local.UserPreviewProvider
+import com.nmel.user.ui.UserDetailsScreenContent
 import com.skydoves.landscapist.ImageOptions
 import com.skydoves.landscapist.glide.GlideImage
 
@@ -58,6 +64,7 @@ fun HomeUserCardItem(modifier: Modifier = Modifier, userData: User, onCardClick:
                 imageOptions = ImageOptions(
                     contentScale = ContentScale.Fit,
                 ),
+                previewPlaceholder = R.drawable.ic_placeholder,
                 loading = {
                     Box(
                         modifier = Modifier
@@ -89,5 +96,13 @@ fun HomeUserCardItem(modifier: Modifier = Modifier, userData: User, onCardClick:
                 }
             )
         }
+    }
+}
+
+@Preview(showBackground = true, uiMode = Configuration.UI_MODE_NIGHT_YES)
+@Composable
+fun HomeUserCardItemPreview(@PreviewParameter(UserPreviewProvider::class) user: User) {
+    RandomUserTheme {
+        HomeUserCardItem(userData = user, onCardClick =  {})
     }
 }

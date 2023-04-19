@@ -17,7 +17,7 @@ ext {
     timber_version = "5.0.1"
     compose_bom_version = "2023.04.00"
     glide_version = "4.15.1"
-    landcapist_glide_version = "2.1.9"
+    landcapist_glide_version = "2.1.11"
     retrofit_version = "2.9.0"
     robolectric_version = "4.9.2"
     paging_version = "3.1.1"

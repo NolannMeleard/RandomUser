@@ -1,6 +1,8 @@
 package com.nmel.home
 
+import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
@@ -71,19 +73,31 @@ fun HomeScreen(
                 key = viewModel.listState,
             ) {
                 when (viewModel.listState) {
-                    ListState.LOADING -> {}
+                    ListState.LOADING -> {
+                        Column(
+                            modifier = Modifier
+                                .fillMaxWidth(),
+                            horizontalAlignment = Alignment.CenterHorizontally,
+                            verticalArrangement = Arrangement.Center,
+                        ) {
+                            Text(text = "Loading")
+
+                            CircularProgressIndicator()
+                        }
+                    }
                     ListState.PAGINATING -> {
                         Column(
                             modifier = Modifier
-                                .size(50.dp)
                                 .fillMaxWidth(),
-                            horizontalAlignment = Alignment.CenterHorizontally
+                            horizontalAlignment = Alignment.CenterHorizontally,
+                            verticalArrangement = Arrangement.Center,
                         ) {
+                            Text(text = "Pagination Loading")
+
                             CircularProgressIndicator()
                         }
                     }
                     ListState.PAGINATION_EXHAUST -> {
-
                     }
                     else -> {}
                 }

@@ -1,5 +1,6 @@
 package com.nmel.user.ui.details
 
+import android.content.res.Configuration
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Spacer
@@ -10,15 +11,24 @@ import androidx.compose.material3.Divider
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.currentComposer
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.tooling.preview.Preview
+import androidx.compose.ui.tooling.preview.PreviewParameter
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import com.nmel.core_common.DateUtils
+import com.nmel.core_ui.theme.RandomUserTheme
 import com.nmel.user.R
 import com.nmel.user.models.local.Location
 import com.nmel.user.models.local.User
+import com.nmel.user.models.local.UserPreviewProvider
+import timber.log.Timber
+import java.util.Locale
 
 /**
  * Created by Nolann Méléard on 19 April 2023.
@@ -27,7 +37,9 @@ import com.nmel.user.models.local.User
  */
 @Composable
 fun PersonalInformation(modifier: Modifier = Modifier, user: User) {
-    Column(modifier = modifier, verticalArrangement = Arrangement.spacedBy(12.dp)) {
+    val formattedDate = DateUtils.parseDateAndFormatToDisplay(user.dob.date)
+    Timber.d("DATE = $formattedDate")
+    Column(modifier = modifier.padding(bottom = 8.dp), verticalArrangement = Arrangement.spacedBy(12.dp)) {
         Spacer(modifier = Modifier.height(8.dp))
 
         Divider(
@@ -59,7 +71,7 @@ fun PersonalInformation(modifier: Modifier = Modifier, user: User) {
         CommonRowData(
             iconResId = R.drawable.ic_cake,
             title = "Birthday :",
-            content = user.dob.date,
+            content = formattedDate,
             modifier = Modifier.padding(horizontal = 8.dp)
         )
 
@@ -69,5 +81,13 @@ fun PersonalInformation(modifier: Modifier = Modifier, user: User) {
             content = Location.formatLocationToString(user.location),
             modifier = Modifier.padding(horizontal = 8.dp)
         )
+    }
+}
+
+@Preview(showBackground = true, uiMode = Configuration.UI_MODE_NIGHT_YES)
+@Composable
+fun PersonalInformationPreview(@PreviewParameter(UserPreviewProvider::class) user: User) {
+    RandomUserTheme {
+        PersonalInformation(user = user)
     }
 }

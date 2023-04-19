@@ -7,8 +7,10 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.nmel.core_ui.R
+import com.nmel.core_ui.theme.RandomUserTheme
 
 /**
  * Created by Nolann Méléard on 19 April 2023.
@@ -27,6 +29,16 @@ fun BackButton(modifier: Modifier = Modifier, onClick: () -> Unit) {
             painter = painterResource(R.drawable.ic_back_arrow),
             contentDescription = "Back",
             tint = Color.LightGray
+        )
+    }
+}
+
+@Preview(showBackground = true)
+@Composable
+fun BackButtonPreview() {
+    RandomUserTheme {
+        BackButton(
+            onClick = {}
         )
     }
 }

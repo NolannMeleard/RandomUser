@@ -1,5 +1,6 @@
 package com.nmel.user.ui.details
 
+import android.content.res.Configuration
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.material3.MaterialTheme
@@ -10,10 +11,15 @@ import androidx.compose.ui.draw.clip
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.tooling.preview.Preview
+import androidx.compose.ui.tooling.preview.PreviewParameter
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.constraintlayout.compose.ConstraintLayout
+import com.nmel.core_ui.theme.RandomUserTheme
+import com.nmel.user.R
 import com.nmel.user.models.local.User
+import com.nmel.user.models.local.UserPreviewProvider
 import com.skydoves.landscapist.ImageOptions
 import com.skydoves.landscapist.glide.GlideImage
 
@@ -35,6 +41,7 @@ fun UserHeader(modifier: Modifier = Modifier, user: User) {
             imageOptions = ImageOptions(
                 contentScale = ContentScale.Fit,
             ),
+            previewPlaceholder = R.drawable.ic_placeholder,
             modifier = Modifier
                 .size(100.dp)
                 .clip(CircleShape)
@@ -70,5 +77,13 @@ fun UserHeader(modifier: Modifier = Modifier, user: User) {
                 bottom.linkTo(parent.bottom)
             }
         )
+    }
+}
+
+@Preview(showBackground = true, uiMode = Configuration.UI_MODE_NIGHT_YES)
+@Composable
+fun UserHeaderPreview(@PreviewParameter(UserPreviewProvider::class) user: User) {
+    RandomUserTheme {
+        UserHeader(user = user)
     }
 }
