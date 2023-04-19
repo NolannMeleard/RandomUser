@@ -5,7 +5,6 @@ import com.nmel.user.models.parser.fromApiRandomUserResponse
 import com.nmel.user.network.interfaces.ApiUsersInterface
 import io.reactivex.rxjava3.core.Single
 import io.reactivex.rxjava3.schedulers.Schedulers
-import timber.log.Timber
 
 /**
  * Created by Nolann Méléard on 17 April 2023.
@@ -15,7 +14,6 @@ import timber.log.Timber
 class UsersRepository(private val apiUsersInterface: ApiUsersInterface) {
     fun getUserByPage(page: Long): Single<RandomUserResponse> {
         return apiUsersInterface.getUsersByPage(page = page).subscribeOn(Schedulers.io()).flatMap {
-            Timber.d("BEFORE PARSING = $it")
             val resultUsers = RandomUserResponse.fromApiRandomUserResponse(it)
 
             resultUsers.fold(

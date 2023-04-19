@@ -7,6 +7,8 @@ import kotlinx.parcelize.Parcelize
 data class Street(
     val number: Int,
     val name: String,
-): Parcelable {
-    companion object
+) : Parcelable {
+    companion object {
+        fun formatStreetToString(street: Street) = "${street.number} ${street.name}"
+    }
 }

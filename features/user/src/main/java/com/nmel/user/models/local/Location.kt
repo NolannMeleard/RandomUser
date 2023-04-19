@@ -12,5 +12,8 @@ data class Location(
     val postcode: String,
     val coordinates: Coordinates,
 ) : Parcelable {
-    companion object
+    companion object {
+        fun formatLocationToString(location: Location): String =
+            "${Street.formatStreetToString(location.street)},\n${location.city} ${location.postcode}"
+    }
 }

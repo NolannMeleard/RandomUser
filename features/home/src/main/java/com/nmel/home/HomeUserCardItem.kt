@@ -31,10 +31,10 @@ import com.skydoves.landscapist.glide.GlideImage
  */
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun HomeUserCardItem(modifier: Modifier = Modifier, userData: User, onCardClick: () -> Unit) {
+fun HomeUserCardItem(modifier: Modifier = Modifier, userData: User, onCardClick: (User) -> Unit) {
     ElevatedCard(
         onClick = {
-            onCardClick()
+            onCardClick(userData)
         },
         modifier = modifier
             .fillMaxWidth()
@@ -65,6 +65,7 @@ fun HomeUserCardItem(modifier: Modifier = Modifier, userData: User, onCardClick:
                             .background(Color.LightGray)
                     )
                 },
+
                 modifier = Modifier
                     .clip(CircleShape)
                     .constrainAs(userThumbnail) {
