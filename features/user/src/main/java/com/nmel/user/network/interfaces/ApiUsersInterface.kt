@@ -16,5 +16,8 @@ interface ApiUsersInterface {
     }
 
     @GET(API)
-    fun getUsersByPage(@Query("page") page: Long, @Query("result") offset: Int = 20) : Single<ApiRandomUserResponse>
+    fun getUsersByPage(
+        @Query("page") page: Long,
+        @Query("results") offset: Int = 20
+    ): Single<ApiRandomUserResponse>
 }

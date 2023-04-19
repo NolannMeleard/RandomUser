@@ -5,7 +5,7 @@ package com.nmel.user.models.local
  * Kiplin
  * nolann.meleard@kiplin.com
  */
-data class UserList(
+data class RandomUserResponse(
     val users: List<User>
 ) {
     companion object

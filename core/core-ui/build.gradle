@@ -74,6 +74,7 @@ dependencies {
     api 'androidx.compose.ui:ui-graphics'
     api 'androidx.compose.ui:ui-tooling-preview'
     api 'androidx.compose.material3:material3'
+    api "androidx.constraintlayout:constraintlayout-compose:1.0.1"
 
     // Glide
     implementation "com.github.bumptech.glide:glide:$glide_version"

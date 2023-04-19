@@ -1,7 +1,5 @@
 package com.nmel.core_ui
 
-import androidx.lifecycle.LiveData
-import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.nmel.core_common.NetworkManager
 import io.reactivex.rxjava3.disposables.CompositeDisposable
@@ -13,8 +11,6 @@ import javax.inject.Inject
  * nolann.meleard@kiplin.com
  */
 abstract class ParentViewModel : ViewModel() {
-    @Inject
-    lateinit var networkManager: NetworkManager
     protected val compositeDisposable = CompositeDisposable()
 
     /**
@@ -27,5 +23,5 @@ abstract class ParentViewModel : ViewModel() {
         compositeDisposable.clear()
     }
 
-    fun isNetworkAvailable() = networkManager.isNetworkAvailable()
+
 }

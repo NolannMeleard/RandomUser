@@ -9,6 +9,8 @@ import com.google.gson.annotations.SerializedName
  */
 
 data class ApiRandomUserResponse(
-    @SerializedName("result")
-    val usersList: List<ApiUser>?
+    @SerializedName("results")
+    val usersList: List<ApiUser>?,
+/*    @SerializedName("info")
+    val info: ApiInfo?*/
 )

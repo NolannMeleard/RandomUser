@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="redAlert">#D32727</color>
+    <color name="greenSuccess">#09BA1A</color>
+    <color name="caribbeanGreen">#08CC9C</color>
+    <color name="transparent">@android:color/transparent</color>
+
+    <color name="lightBlue10">#1A10C2DC</color>
+    <color name="iceBlue">#F3F7FF</color>
+
+    <!-- variants white -->
+    <color name="white">#FFFFFF</color>
+    <color name="white20">#33FFFFFF</color>
+    <color name="white50">#80FFFFFF</color>
+    <color name="whiteSmoke">#F3F3F3</color>
+
+    <!-- variants black -->
+    <color name="black">#000000</color>
+    <color name="black10">#1A000000</color>
+    <color name="black20">#33000000</color>
+    <color name="black50">#80000000</color>
+    <color name="black60">#99000000</color>
+    <color name="black70">#B2000000</color>
+
+    <!-- variants grey -->
+    <color name="ultraDarkGrey">#3D3E43</color>
+    <color name="ultraDarkGrey10">#1A3D3E43</color>
+    <color name="ultraDarkGrey50">#803D3E43</color>
+    <color name="darkGrey">#6D7078</color>
+    <color name="grey">#94969E</color>
+    <color name="lightGrey">#BCBEC2</color>
+    <color name="ultraLightGrey">#D7D8DB</color>
+    <color name="extraLightGrey">#EEEEEE</color>
+    <color name="whiteGrey">#F9F9FC</color>
+</resources>
