@@ -63,13 +63,14 @@ fun PersonalInformation(modifier: Modifier = Modifier, user: User) {
         )
 
         CommonRowData(
+            iconResId = R.drawable.ic_cake,
             title = "Age :",
             content = user.dob.age.toString(),
             modifier = Modifier.padding(horizontal = 8.dp)
         )
 
         CommonRowData(
-            iconResId = R.drawable.ic_cake,
+            iconResId = R.drawable.ic_calendar,
             title = "Birthday :",
             content = formattedDate,
             modifier = Modifier.padding(horizontal = 8.dp)

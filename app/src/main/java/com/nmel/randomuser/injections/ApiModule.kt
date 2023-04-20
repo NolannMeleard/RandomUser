@@ -2,6 +2,7 @@ package com.nmel.randomuser.injections
 
 import com.nmel.user.network.interfaces.ApiUsersInterface
 import com.nmel.user.network.repository.UsersRepository
+import com.nmel.user.storage.UsersDao
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -19,7 +20,7 @@ import javax.inject.Singleton
 class ApiModule {
     @Singleton
     @Provides
-    fun providesUsersProvider(api: ApiUsersInterface): UsersRepository = UsersRepository(api)
+    fun providesUsersProvider(api: ApiUsersInterface, usersDao: UsersDao): UsersRepository = UsersRepository(api, usersDao)
 
     @Singleton
     @Provides

@@ -73,6 +73,7 @@ dependencies {
     api 'androidx.compose.ui:ui'
     api 'androidx.compose.ui:ui-graphics'
     api 'androidx.compose.ui:ui-tooling-preview'
+    api "androidx.compose.material:material" // for pullrefresh
     api 'androidx.compose.material3:material3'
     api "androidx.constraintlayout:constraintlayout-compose:1.0.1"
 
