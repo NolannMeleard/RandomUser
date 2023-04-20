@@ -13,15 +13,19 @@ import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
 import androidx.compose.material3.TopAppBar
+import androidx.compose.material3.TopAppBarColors
+import androidx.compose.material3.TopAppBarDefaults
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.draw.shadow
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.tooling.preview.PreviewParameter
 import androidx.compose.ui.unit.dp
 import com.nmel.core_ui.composable.BackButton
 import com.nmel.core_ui.theme.RandomUserTheme
+import com.nmel.user.R
 import com.nmel.user.models.local.User
 import com.nmel.user.models.local.UserPreviewProvider
 import com.nmel.user.ui.details.ContactInformation
@@ -40,7 +44,7 @@ fun UserDetailsScreen(modifier: Modifier = Modifier, user: User, onBackClick: ()
     Scaffold(
         topBar = {
             TopAppBar(
-                title = { Text(text = "User") },
+                title = { Text(text = stringResource(R.string.user_details_screen_title), color = MaterialTheme.colorScheme.onBackground) },
                 navigationIcon = { BackButton(onClick = onBackClick) },
             )
         },
@@ -68,7 +72,7 @@ fun UserDetailsScreenContent(modifier: Modifier = Modifier, user: User) {
             .clip(MaterialTheme.shapes.large)
             .background(
                 shape = MaterialTheme.shapes.large,
-                color = MaterialTheme.colorScheme.primaryContainer
+                color = MaterialTheme.colorScheme.secondaryContainer
             ),
         verticalArrangement = Arrangement.spacedBy(10.dp)
     ) {

@@ -11,10 +11,8 @@ import androidx.compose.material3.Divider
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.currentComposer
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.platform.LocalContext
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
@@ -27,8 +25,6 @@ import com.nmel.user.R
 import com.nmel.user.models.local.Location
 import com.nmel.user.models.local.User
 import com.nmel.user.models.local.UserPreviewProvider
-import timber.log.Timber
-import java.util.Locale
 
 /**
  * Created by Nolann Méléard on 19 April 2023.
@@ -38,12 +34,14 @@ import java.util.Locale
 @Composable
 fun PersonalInformation(modifier: Modifier = Modifier, user: User) {
     val formattedDate = DateUtils.parseDateAndFormatToDisplay(user.dob.date)
-    Timber.d("DATE = $formattedDate")
-    Column(modifier = modifier.padding(bottom = 8.dp), verticalArrangement = Arrangement.spacedBy(12.dp)) {
+    Column(
+        modifier = modifier.padding(bottom = 8.dp),
+        verticalArrangement = Arrangement.spacedBy(12.dp)
+    ) {
         Spacer(modifier = Modifier.height(8.dp))
 
         Divider(
-            color = Color.LightGray,
+            color = MaterialTheme.colorScheme.onSecondaryContainer,
             thickness = 0.5.dp,
             modifier = Modifier
                 .fillMaxWidth()
@@ -51,8 +49,8 @@ fun PersonalInformation(modifier: Modifier = Modifier, user: User) {
         )
 
         Text(
-            text = "Personal information",
-            color = MaterialTheme.colorScheme.onPrimary,
+            text = stringResource(R.string.personal_information_title),
+            color = MaterialTheme.colorScheme.onSecondaryContainer,
             style = TextStyle(
                 fontSize = 18.sp,
                 fontWeight = FontWeight.Bold
@@ -64,21 +62,21 @@ fun PersonalInformation(modifier: Modifier = Modifier, user: User) {
 
         CommonRowData(
             iconResId = R.drawable.ic_cake,
-            title = "Age :",
+            title = stringResource(R.string.age_title),
             content = user.dob.age.toString(),
             modifier = Modifier.padding(horizontal = 8.dp)
         )
 
         CommonRowData(
             iconResId = R.drawable.ic_calendar,
-            title = "Birthday :",
+            title = stringResource(R.string.birthday_title),
             content = formattedDate,
             modifier = Modifier.padding(horizontal = 8.dp)
         )
 
         CommonRowData(
             iconResId = R.drawable.ic_home,
-            title = "Address :",
+            title = stringResource(R.string.address_title),
             content = Location.formatLocationToString(user.location),
             modifier = Modifier.padding(horizontal = 8.dp)
         )

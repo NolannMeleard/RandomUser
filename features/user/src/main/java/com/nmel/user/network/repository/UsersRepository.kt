@@ -36,7 +36,7 @@ class UsersRepository @Inject constructor(
         }
     }
 
-    fun getLocalUsers(): Flowable<List<User>> {
+    fun getLocalUsers(): Single<List<User>> {
         return usersDao.getUsers()
     }
     fun clearLocalUsers(): Completable = usersDao.clearAllUsers()

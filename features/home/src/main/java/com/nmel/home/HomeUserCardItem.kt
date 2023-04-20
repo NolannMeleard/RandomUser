@@ -7,6 +7,7 @@ import androidx.compose.foundation.layout.aspectRatio
 import androidx.compose.foundation.layout.fillMaxHeight
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.material3.CardDefaults
 import androidx.compose.material3.ElevatedCard
@@ -16,7 +17,6 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
-import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.tooling.preview.PreviewParameter
@@ -26,7 +26,6 @@ import androidx.constraintlayout.compose.Dimension
 import com.nmel.core_ui.theme.RandomUserTheme
 import com.nmel.user.models.local.User
 import com.nmel.user.models.local.UserPreviewProvider
-import com.nmel.user.ui.UserDetailsScreenContent
 import com.skydoves.landscapist.ImageOptions
 import com.skydoves.landscapist.glide.GlideImage
 
@@ -48,7 +47,7 @@ fun HomeUserCardItem(modifier: Modifier = Modifier, userData: User, onCardClick:
         shape = MaterialTheme.shapes.large,
         elevation = CardDefaults.elevatedCardElevation(defaultElevation = 3.dp),
         colors = CardDefaults.elevatedCardColors(
-            containerColor = MaterialTheme.colorScheme.primaryContainer
+            containerColor = MaterialTheme.colorScheme.secondaryContainer
         )
     ) {
         ConstraintLayout(
@@ -64,15 +63,23 @@ fun HomeUserCardItem(modifier: Modifier = Modifier, userData: User, onCardClick:
                 imageOptions = ImageOptions(
                     contentScale = ContentScale.Fit,
                 ),
-                previewPlaceholder = R.drawable.ic_placeholder,
                 loading = {
                     Box(
                         modifier = Modifier
+                            .size(50.dp)
                             .clip(CircleShape)
-                            .background(Color.LightGray)
+                            .background(MaterialTheme.colorScheme.tertiary)
                     )
                 },
-
+                failure = {
+                    Box(
+                        modifier = Modifier
+                            .size(50.dp)
+                            .clip(CircleShape)
+                            .background(MaterialTheme.colorScheme.tertiary)
+                    )
+                },
+                previewPlaceholder = R.drawable.ic_placeholder,
                 modifier = Modifier
                     .clip(CircleShape)
                     .constrainAs(userThumbnail) {
@@ -86,7 +93,7 @@ fun HomeUserCardItem(modifier: Modifier = Modifier, userData: User, onCardClick:
 
             Text(
                 text = "${userData.name.first} ${userData.name.last}",
-                color = Color.DarkGray,
+                color = MaterialTheme.colorScheme.onSecondaryContainer,
                 modifier = Modifier.constrainAs(userName) {
                     top.linkTo(parent.top)
                     start.linkTo(userThumbnail.end, margin = 8.dp)
@@ -103,6 +110,6 @@ fun HomeUserCardItem(modifier: Modifier = Modifier, userData: User, onCardClick:
 @Composable
 fun HomeUserCardItemPreview(@PreviewParameter(UserPreviewProvider::class) user: User) {
     RandomUserTheme {
-        HomeUserCardItem(userData = user, onCardClick =  {})
+        HomeUserCardItem(userData = user, onCardClick = {})
     }
 }

@@ -22,7 +22,7 @@ interface UsersDao {
     fun insertAll(users: List<User>)
 
     @Query("SELECT * FROM users ORDER BY email")
-    fun getUsers(): Flowable<List<User>>
+    fun getUsers(): Single<List<User>>
 
     @Query("DELETE FROM users")
     fun clearAllUsers(): Completable

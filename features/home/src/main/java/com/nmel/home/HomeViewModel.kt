@@ -13,7 +13,6 @@ import com.nmel.user.network.repository.UsersRepository
 import dagger.hilt.android.lifecycle.HiltViewModel
 import io.reactivex.rxjava3.android.schedulers.AndroidSchedulers
 import io.reactivex.rxjava3.schedulers.Schedulers
-import timber.log.Timber
 import javax.inject.Inject
 
 /**
@@ -80,12 +79,11 @@ class HomeViewModel @Inject constructor(
     }
 
     private fun getLocalData() {
-        if (usersList.size == 0) {
+        if (usersList.size == 0 && listState != ListState.ERROR) {
             compositeDisposable.add(
                 repository.getLocalUsers().subscribeOn(Schedulers.io())
                     .observeOn(AndroidSchedulers.mainThread())
                     .subscribe({
-                        page = 2
                         listState = if (it.isNotEmpty()) {
                             _usersData.postValue(it)
                             ListState.NOT_CONNECTED
@@ -96,10 +94,9 @@ class HomeViewModel @Inject constructor(
                     }, {
                         page = 1
                         listState = ListState.ERROR
-                        Timber.w(it, "An error Occurred")
                     })
             )
-        } else {
+        } else if (usersList.size != 0 && listState != ListState.ERROR) {
             listState = ListState.NOT_CONNECTED
         }
     }
@@ -111,6 +108,5 @@ enum class ListState {
     IDLE,
     LOADING,
     ERROR,
-    PAGINATION_EXHAUST,
-    NOT_CONNECTED
+    NOT_CONNECTED;
 }

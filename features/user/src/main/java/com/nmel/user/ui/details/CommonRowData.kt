@@ -37,7 +37,7 @@ fun CommonRowData(
             Icon(
                 painter = painterResource(iconResId),
                 contentDescription = null,
-                tint = MaterialTheme.colorScheme.primary,
+                tint = MaterialTheme.colorScheme.onSecondaryContainer,
                 modifier = Modifier
                     .padding(start = 8.dp)
             )
@@ -45,7 +45,7 @@ fun CommonRowData(
 
         Text(
             text = title,
-            color = MaterialTheme.colorScheme.onPrimary,
+            color = MaterialTheme.colorScheme.onSecondaryContainer,
             style = TextStyle(
                 fontSize = 16.sp,
                 fontWeight = FontWeight.Bold
@@ -57,7 +57,7 @@ fun CommonRowData(
 
         Text(
             text = content,
-            color = MaterialTheme.colorScheme.onPrimary,
+            color = MaterialTheme.colorScheme.onSecondaryContainer,
             style = TextStyle(
                 fontSize = 14.sp,
             ),

@@ -42,7 +42,7 @@ class NetworkModule {
 
     @Provides
     fun provideHttpLoggingInterceptor(): HttpLoggingInterceptor {
-        val httpLoggingInterceptor = HttpLoggingInterceptor { message -> Timber.d(message) }
+        val httpLoggingInterceptor = HttpLoggingInterceptor { message -> /*Timber.d(message)*/ }
         httpLoggingInterceptor.level = HttpLoggingInterceptor.Level.BODY
         return httpLoggingInterceptor
     }

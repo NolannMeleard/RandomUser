@@ -47,9 +47,5 @@ class NetworkManager(context: Context) {
      *
      * @return True if internet available
      */
-    fun isNetworkAvailable(): Boolean {
-        val isNetworkAvailable = checkNetworkAvailable()
-        Timber.d("isNetworkAvailable:$isNetworkAvailable")
-        return isNetworkAvailable
-    }
+    fun isNetworkAvailable(): Boolean = checkNetworkAvailable()
 }

@@ -1,11 +1,7 @@
 package com.nmel.home
 
 import androidx.compose.foundation.clickable
-import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
-import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.fillMaxWidth
-import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
@@ -14,7 +10,6 @@ import androidx.compose.material.ExperimentalMaterialApi
 import androidx.compose.material.pullrefresh.PullRefreshIndicator
 import androidx.compose.material.pullrefresh.pullRefresh
 import androidx.compose.material.pullrefresh.rememberPullRefreshState
-import androidx.compose.material3.CircularProgressIndicator
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Scaffold
@@ -29,13 +24,8 @@ import androidx.compose.runtime.remember
 import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.platform.LocalConfiguration
 import androidx.compose.ui.res.stringResource
-import androidx.compose.ui.text.TextStyle
-import androidx.compose.ui.text.font.FontWeight
-import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
-import androidx.compose.ui.unit.sp
 import com.nmel.user.models.local.User
 import kotlinx.coroutines.launch
 
@@ -55,6 +45,7 @@ fun HomeScreen(
     val coroutineScope = rememberCoroutineScope()
     val lazyColumnState = rememberLazyListState()
     val userList by viewModel.usersData.observeAsState()
+
     val shouldStartPaginate = remember {
         derivedStateOf {
             viewModel.canPaginate && (lazyColumnState.layoutInfo.visibleItemsInfo.lastOrNull()?.index
@@ -64,13 +55,13 @@ fun HomeScreen(
 
     val hasReachBottom = remember {
         derivedStateOf {
-            lazyColumnState.layoutInfo.visibleItemsInfo.lastOrNull()?.index == userList?.size && viewModel.listState == ListState.NOT_CONNECTED
+            lazyColumnState.layoutInfo.visibleItemsInfo.lastOrNull()?.index == userList?.size
         }
     }
 
     val pullRefreshState =
         rememberPullRefreshState(viewModel.listState == ListState.LOADING, {
-            viewModel.listState = ListState.LOADING
+            if (viewModel.listState != ListState.ERROR) viewModel.listState = ListState.LOADING
             viewModel.getUsers(shouldRefresh = true)
         })
 
@@ -126,59 +117,5 @@ fun HomeScreen(
     }
 }
 
-@Composable
-fun ListStateViews(listState: ListState) {
-    when (listState) {
-        ListState.LOADING -> {
-            Column(
-                modifier = Modifier
-                    .fillMaxWidth(),
-                horizontalAlignment = Alignment.CenterHorizontally,
-                verticalArrangement = Arrangement.Center
-            ) {
-                Text(text = stringResource(R.string.loading))
-                CircularProgressIndicator()
-            }
-        }
-
-        ListState.NOT_CONNECTED -> {
-            Column(
-                modifier = Modifier
-                    .fillMaxWidth(),
-                horizontalAlignment = Alignment.CenterHorizontally,
-                verticalArrangement = Arrangement.Center,
-            ) {
-                Text(
-                    text = stringResource(R.string.list_state_not_connected_limit),
-                    color = MaterialTheme.colorScheme.onPrimaryContainer,
-                    modifier = Modifier.padding(vertical = 12.dp, horizontal = 12.dp)
-                )
-            }
-        }
-
-        ListState.ERROR -> {
-            Column(
-                modifier = Modifier
-                    .height(LocalConfiguration.current.screenHeightDp.dp)
-                    .fillMaxWidth(),
-                horizontalAlignment = Alignment.CenterHorizontally,
-                verticalArrangement = Arrangement.Center,
-            ) {
-                Text(
-                    text = stringResource(R.string.local_fetch_error),
-                    color = MaterialTheme.colorScheme.error,
-                    style = TextStyle(
-                        fontSize = 20.sp,
-                        fontWeight = FontWeight.Bold
-                    ),
-                    textAlign = TextAlign.Center,
-                    modifier = Modifier.padding(vertical = 12.dp, horizontal = 12.dp)
-                )
-            }
-        }
-
-        else -> {}
-    }
-}
 
 

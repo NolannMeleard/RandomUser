@@ -1,6 +1,9 @@
 package com.nmel.user.ui.details
 
 import android.content.res.Configuration
+import androidx.compose.foundation.background
+import androidx.compose.foundation.layout.Box
+import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.material3.MaterialTheme
@@ -41,6 +44,23 @@ fun UserHeader(modifier: Modifier = Modifier, user: User) {
             imageOptions = ImageOptions(
                 contentScale = ContentScale.Fit,
             ),
+            loading = {
+                Box(
+                    modifier = Modifier
+                        .size(100.dp)
+                        .clip(CircleShape)
+                        .background(MaterialTheme.colorScheme.tertiary)
+                )
+            },
+            failure = {
+                Box(
+                    modifier = Modifier
+                        .size(100.dp)
+                        .fillMaxSize()
+                        .clip(CircleShape)
+                        .background(MaterialTheme.colorScheme.tertiary)
+                )
+            },
             previewPlaceholder = R.drawable.ic_placeholder,
             modifier = Modifier
                 .size(100.dp)
@@ -53,7 +73,7 @@ fun UserHeader(modifier: Modifier = Modifier, user: User) {
         )
         Text(
             text = "${user.name.title} ${user.name.first} ${user.name.last}",
-            color = MaterialTheme.colorScheme.onPrimary,
+            color = MaterialTheme.colorScheme.onSecondaryContainer,
             style = TextStyle(
                 fontSize = 20.sp,
                 fontWeight = FontWeight.Bold
@@ -66,7 +86,7 @@ fun UserHeader(modifier: Modifier = Modifier, user: User) {
         )
         Text(
             text = "from ${user.location.country}",
-            color = MaterialTheme.colorScheme.onPrimary,
+            color = MaterialTheme.colorScheme.onSecondaryContainer,
             style = TextStyle(
                 fontSize = 16.sp
             ),

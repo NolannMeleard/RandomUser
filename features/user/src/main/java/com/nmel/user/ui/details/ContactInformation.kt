@@ -11,6 +11,7 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
@@ -32,7 +33,7 @@ import com.nmel.user.models.local.UserPreviewProvider
 fun ContactInformation(modifier: Modifier = Modifier, user: User) {
     Column(modifier = modifier.padding(bottom = 8.dp), verticalArrangement = Arrangement.spacedBy(12.dp)) {
         Divider(
-            color = Color.LightGray,
+            color = MaterialTheme.colorScheme.onSecondaryContainer,
             thickness = 0.5.dp,
             modifier = Modifier
                 .fillMaxWidth()
@@ -40,8 +41,8 @@ fun ContactInformation(modifier: Modifier = Modifier, user: User) {
         )
 
         Text(
-            text = "Contact :",
-            color = MaterialTheme.colorScheme.onPrimary,
+            text = stringResource(R.string.contact_title),
+            color = MaterialTheme.colorScheme.onSecondaryContainer,
             style = TextStyle(
                 fontSize = 18.sp,
                 fontWeight = FontWeight.Bold
@@ -53,28 +54,28 @@ fun ContactInformation(modifier: Modifier = Modifier, user: User) {
 
         CommonRowData(
             iconResId = R.drawable.ic_email,
-            title = "Email :",
+            title = stringResource(R.string.email_title),
             content = user.email,
             modifier = Modifier.padding(horizontal = 8.dp)
         )
 
         CommonRowData(
             iconResId = R.drawable.ic_person,
-            title = "Username :",
+            title = stringResource(R.string.username_title),
             content = user.login.username,
             modifier = Modifier.padding(horizontal = 8.dp)
         )
 
         CommonRowData(
             iconResId = R.drawable.ic_phone,
-            title = "Cellphone :",
+            title = stringResource(R.string.cellphone_title),
             content = user.cell,
             modifier = Modifier.padding(horizontal = 8.dp)
         )
 
         CommonRowData(
             iconResId = R.drawable.ic_home,
-            title = "Home :",
+            title = stringResource(R.string.home_title),
             content = user.phone,
             modifier = Modifier.padding(horizontal = 8.dp)
         )
