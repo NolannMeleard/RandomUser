@@ -40,9 +40,9 @@ This project is using the following Libraries:
 - **Junit4**: Testing Library
 
 ## Screenshots
-<img src="sreenshots/Screenshot_home.png" width="400">
+<img src="Screenshot_home.png" width="400">
 
-<img src="sreenshots/Screenshot_details.png" width="400">
+<img src="Screenshot_details.png" width="400">
 
 ## Development
 
