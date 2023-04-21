@@ -6,14 +6,13 @@
 
 ## Project
 
-Android application showing users from the open API randomuser.me
+Android application showing users from the open API randomuser.me.
+The randomuser.me Api allow developers to get random users, which can be GET by page.
 
 This project is following the MVVM architecture combined with Single activity architecture and
 multi-modules.
 
-The randomuser.me Api allow developers to get random users, which can be GET by page.
-
-this project has been realized with a week time limit.
+This project has been realized within a week time limit.
 
 ## Setup
 
@@ -63,8 +62,11 @@ The project has been develop following a MultiModules design. With
 The :app module is implement the dependency injection and containing the application and
 MainActivity.
 
+Each features module contains his own navigation graph which.
+
 I tried to do my own implementation of page data retrieval, alongside local database storing and
-display when the user does not have a network connection.
+display when the user does not have a network connection. I can't say it's a full success, but
+without previous use of this type of data requesting and usage, I think this is a good first step.
 
 ## Design
 
