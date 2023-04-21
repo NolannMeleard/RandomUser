@@ -1,0 +1,33 @@
+// Top-level build file where you can add configuration options common to all sub-projects/modules.
+buildscript {
+    apply from: 'dependencies.gradle'
+}
+
+plugins {
+    id 'com.android.application' version '8.0.0' apply false
+    id 'com.android.library' version '8.0.0' apply false
+    id 'org.jetbrains.kotlin.android' version '1.8.20' apply false
+    id 'com.google.dagger.hilt.android' version '2.45' apply false
+    id 'androidx.navigation.safeargs' version '2.5.3' apply false
+}
+
+allprojects {
+    project.ext {
+        /**
+         * Android sdk version
+         */
+        compile_sdk_version = 33
+        min_sdk_version = 24
+        target_sdk_version = 33
+
+        /**
+         * Java version
+         */
+        javaCompileOptionsSourceCompatibility = JavaVersion.VERSION_17
+        javaCompileOptionsTargetCompatibility = JavaVersion.VERSION_17
+        javaKotlinOptionsJvmTarget = "17"
+
+        // Compose bom
+        composeBom = "androidx.compose:compose-bom:$compose_bom_version"
+    }
+}

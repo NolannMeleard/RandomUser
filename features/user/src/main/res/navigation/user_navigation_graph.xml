@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/user_navigation_graph"
+    app:startDestination="@id/userDetailsFragment">
+
+    <fragment
+        android:id="@+id/userDetailsFragment"
+        android:name="com.nmel.user.ui.UserDetailsFragment"
+        android:label="UserDetailsFragment" >
+        <argument
+            android:name="user"
+            app:argType="com.nmel.user.models.local.User" />
+    </fragment>
+</navigation>

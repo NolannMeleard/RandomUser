@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="user_details_screen_title">User</string>
+    <string name="contact_title">Contact :</string>
+    <string name="email_title">Email :</string>
+    <string name="username_title">Username :</string>
+    <string name="cellphone_title">Cellphone :</string>
+    <string name="home_title">Home :</string>
+    <string name="personal_information_title">Personal information</string>
+    <string name="age_title">Age :</string>
+    <string name="birthday_title">Birthday :</string>
+    <string name="address_title">Address :</string>
+</resources>
